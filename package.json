@@ -1,0 +1,28 @@
+{
+  "name": "footballcoin-backend",
+  "version": "1.0.0",
+  "description": "FootballCoin backend",
+  "main": "index.js",
+  "scripts": {
+    "live": "./node_modules/.bin/nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryzhak/footballcoin-backend.git"
+  },
+  "author": "Vladimir Ryzhak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryzhak/footballcoin-backend/issues"
+  },
+  "homepage": "https://github.com/ryzhak/footballcoin-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.19"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
