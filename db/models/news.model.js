@@ -1,3 +1,4 @@
+const moment = require('moment');
 const mongoose = require('mongoose');
 
 const newsSchema = new mongoose.Schema({
@@ -12,6 +13,15 @@ const newsSchema = new mongoose.Schema({
 	createdAt: {
 		type: Number,
 		required: true
+	}
+});
+
+/**
+ * Before validate hook
+ */
+newsSchema.pre('validate', function() {
+	if(this.isNew) {
+		this.createdAt = moment().unix();
 	}
 });
 
