@@ -1,6 +1,8 @@
 const express = require('express');
 
 const News = require('../db/models/news.model');
+const User = require('../db/models/user.model');
+const accessMiddleware = require('../lib/middlewares/access-middleware');
 
 const newsRoutes = express.Router();
 
@@ -31,7 +33,9 @@ newsRoutes.route('/:id').get(async (req, res, next) => {
 /**
  * Creates a new news item
  */
-newsRoutes.route('/').post(async (req, res, next) => {
+newsRoutes.route('/')
+	.all(accessMiddleware(User.ROLES.ADMIN))
+	.post(async (req, res, next) => {
 	try {
 		const model = new News(req.body);
 		await model.save();
@@ -44,7 +48,9 @@ newsRoutes.route('/').post(async (req, res, next) => {
 /**
  * Updates news item by id
  */
-newsRoutes.route('/:id').patch(async (req, res, next) => {
+newsRoutes.route('/:id')
+	.all(accessMiddleware(User.ROLES.ADMIN))
+	.patch(async (req, res, next) => {
 	try {
 		const model = await News.findByIdAndUpdate(req.params.id, req.body, {new: true});
     	res.send(model);
@@ -56,7 +62,9 @@ newsRoutes.route('/:id').patch(async (req, res, next) => {
 /**
  * Deletes news item by id
  */
-newsRoutes.route('/:id').delete(async (req, res, next) => {
+newsRoutes.route('/:id')
+	.all(accessMiddleware(User.ROLES.ADMIN))
+	.delete(async (req, res, next) => {
 	try {
 		await News.findByIdAndDelete(req.params.id);
     	res.send();

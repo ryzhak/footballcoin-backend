@@ -3,6 +3,8 @@ const formidableMiddleware = require('express-formidable');
 const fs = require('fs');
 
 const Player = require('../db/models/player.model');
+const User = require('../db/models/user.model');
+const accessMiddleware = require('../lib/middlewares/access-middleware');
 
 const playerRoutes = express.Router();
 
@@ -33,7 +35,9 @@ playerRoutes.route('/:id').get(async (req, res, next) => {
 /**
  * Deletes player by id
  */
-playerRoutes.route('/:id').delete(async (req, res, next) => {
+playerRoutes.route('/:id')
+	.all(accessMiddleware(User.ROLES.ADMIN))
+	.delete(async (req, res, next) => {
 	try {
 		// check model exists
 		const model = await Player.findById(req.params.id);
@@ -52,7 +56,7 @@ playerRoutes.route('/:id').delete(async (req, res, next) => {
  * Creates a new player
  */
 playerRoutes.route('/')
-	.all(formidableMiddleware())
+	.all(formidableMiddleware(), accessMiddleware(User.ROLES.ADMIN))
 	.post(async (req, res, next) => {
 	try {
 		const model = new Player({
@@ -88,7 +92,7 @@ playerRoutes.route('/')
  * Updates player by id
  */
 playerRoutes.route('/:id')
-	.all(formidableMiddleware())
+	.all(formidableMiddleware(), accessMiddleware(User.ROLES.ADMIN))
 	.patch(async (req, res, next) => {
 	try {
 		const model = await Player.findById(req.params.id);
