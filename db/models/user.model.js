@@ -26,12 +26,37 @@ const userSchema = new mongoose.Schema({
 });
 
 /**
+ * Static methods
+ */
+
+/**
  * Available user roles
  */
 userSchema.statics.ROLES = {
 	ADMIN: 'admin',
 	CUSTOMER: 'customer'
 };
+
+/**
+ * Instance methods
+ */
+
+/**
+ * Checks that user provided a valid password
+ * @param {string} providedPassword Provided password
+ * @returns {boolean} Whether password is correct
+ */
+userSchema.method('hasValidPassword', function(providedPassword) {
+	return crypto.createHash('md5').update(providedPassword).digest('hex') == this.password;
+});
+
+/**
+ * Refreshes user access token
+ */
+userSchema.method('refreshAccessToken', function() {
+	this.accessToken = crypto.randomBytes(32).toString('hex');
+	this.save();
+});
 
 /**
  * Before validate hook

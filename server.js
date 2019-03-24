@@ -2,6 +2,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 
 const newsRoute = require('./api/news.route');
+const userRoute = require('./api/user.route');
 const config = require('./config');
 const db = require('./db/db');
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 // apply api routes
 app.use('/news', newsRoute);
+app.use('/users', userRoute);
 
 // global error handler
 app.use((err, req, res, next) => {
