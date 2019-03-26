@@ -1,4 +1,5 @@
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const express = require('express');
 
 const newsRoute = require('./api/news.route');
@@ -13,6 +14,7 @@ const app = express();
 db.init();
 
 // use express middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/assets', express.static('assets'));
 
