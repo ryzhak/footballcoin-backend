@@ -63,6 +63,7 @@ playerRoutes.route('/')
 			name: req.fields.name,
 			surname: req.fields.surname,
 			position: req.fields.position,
+			desc: req.fields.desc,
 			createdAt: 0,
 			photoName: 'temp'
 		});
