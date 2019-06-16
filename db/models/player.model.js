@@ -18,6 +18,9 @@ const playerSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	desc: {
+		type: String
+	},
 	createdAt: {
 		type: Number,
 		required: true

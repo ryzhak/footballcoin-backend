@@ -60,72 +60,84 @@ async function createInitialModels() {
 		}
 	}
 	// create players
+	const defaultDesc = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.';
 	const players = [
 		{
 			name: 'Wojciech',
 			surname: 'Szczesny',
 			photoName: 'SZCZESNY_501x752.variant200x300.png',
-			position: Player.POSITIONS.GK
+			position: Player.POSITIONS.GK,
+			desc: defaultDesc
 		},
 		{
 			name: 'Alex',
 			surname: 'Sandro',
 			photoName: 'SANDRO_501x752.variant200x300.png',
-			position: Player.POSITIONS.LB
+			position: Player.POSITIONS.LB,
+			desc: defaultDesc
 		},
 		{
 			name: 'Martin',
 			surname: 'Caceres',
 			photoName: 'Caceres_501x752.variant200x300.png',
-			position: Player.POSITIONS.CB
+			position: Player.POSITIONS.CB,
+			desc: defaultDesc
 		},
 		{
 			name: 'Giorgio',
 			surname: 'Chiellini',
 			photoName: 'Chiellini_501x752.variant200x300.png',
-			position: Player.POSITIONS.CB
+			position: Player.POSITIONS.CB,
+			desc: defaultDesc
 		},
 		{
 			name: 'Joao',
 			surname: 'Cancelo',
 			photoName: 'Cancelo_501x752.variant200x300.png',
-			position: Player.POSITIONS.RB
+			position: Player.POSITIONS.RB,
+			desc: defaultDesc
 		},
 		{
 			name: 'Miralem',
 			surname: 'Pjanic',
 			photoName: 'PJANIC_501x752.variant200x300.png',
-			position: Player.POSITIONS.CM
+			position: Player.POSITIONS.CM,
+			desc: defaultDesc
 		},
 		{
 			name: 'Sami',
 			surname: 'Khedira',
 			photoName: 'KHEDIRA_501x752.variant200x300.png',
-			position: Player.POSITIONS.CM
+			position: Player.POSITIONS.CM,
+			desc: defaultDesc
 		},
 		{
 			name: 'Blaise',
 			surname: 'Matuidi',
 			photoName: 'Matuidi_501x752.variant200x300.png',
-			position: Player.POSITIONS.CM
+			position: Player.POSITIONS.CM,
+			desc: defaultDesc
 		},
 		{
 			name: 'Cristiano',
 			surname: 'Ronaldo',
 			photoName: 'RONALDO_501x752.variant200x300.png',
-			position: Player.POSITIONS.LM
+			position: Player.POSITIONS.LM,
+			desc: defaultDesc
 		},
 		{
 			name: 'Paulo',
 			surname: 'Dybala',
 			photoName: 'Dybala_501x752.variant200x300.png',
-			position: Player.POSITIONS.ST
+			position: Player.POSITIONS.ST,
+			desc: defaultDesc
 		},
 		{
 			name: 'Federico',
 			surname: 'Bernardeschi',
 			photoName: 'Bernardeschi_501x752.variant200x300.png',
-			position: Player.POSITIONS.RM
+			position: Player.POSITIONS.RM,
+			desc: defaultDesc
 		}
 	];
 	for(let player of players) {

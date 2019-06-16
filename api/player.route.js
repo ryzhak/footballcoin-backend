@@ -102,6 +102,7 @@ playerRoutes.route('/:id')
 		model.name = req.fields.name || model.name;
 		model.surname = req.fields.surname || model.surname;
 		model.position = req.fields.position || model.position;
+		model.desc = req.fields.desc || model.desc;
 		// validate model
 		const validationErrors = model.validateSync();
 		if(validationErrors) {
